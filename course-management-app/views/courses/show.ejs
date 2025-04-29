@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Course Details</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Course Details</h1>
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title"><%= course.courseName %></h2>
+                <p class="card-text"><strong>Price:</strong> $<%= course.price %></p>
+                <p class="card-text"><strong>Duration:</strong> <%= course.duration %> hours</p>
+                <p class="card-text"><strong>Start Date:</strong> <%= course.courseStartDate.toDateString() %></p>
+                <img src="<%= course.image %>" alt="<%= course.courseName %>" class="img-fluid">
+            </div>
+        </div>
+        <a href="/courses" class="btn btn-primary mt-3">Back to Courses</a>
+        <a href="/courses/<%= course._id %>/edit" class="btn btn-warning mt-3">Edit Course</a>
+        <form action="/courses/<%= course._id %>/delete" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger mt-3">Delete Course</button>
+        </form>
+    </div>
+</body>
+</html>

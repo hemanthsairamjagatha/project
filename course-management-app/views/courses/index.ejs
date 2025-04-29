@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Course Management</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Course List</h1>
+        <a href="/course/new" class="btn btn-primary">Add New Course</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Duration</th>
+                    <th>Start Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% courses.forEach(course => { %>
+                    <tr>
+                        <td><%= course.courseName %></td>
+                        <td><%= course.price %></td>
+                        <td><img src="<%= course.image %>" alt="<%= course.courseName %>" style="width: 100px;"></td>
+                        <td><%= course.duration %></td>
+                        <td><%= course.courseStartDate.toDateString() %></td>
+                        <td>
+                            <a href="/courses/<%= course._id %>" class="btn btn-info">Show</a>
+                            <a href="/courses/<%= course._id %>/edit" class="btn btn-warning">Edit</a>
+                            <form action="/courses/<%= course._id %>/delete" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
